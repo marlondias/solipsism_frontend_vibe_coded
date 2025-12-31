@@ -1,16 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import './index.css'
-import App from './App.tsx'
-import { AuthProvider } from './context/AuthContext'
+import App from '@/App.tsx'
+import '@/index.css'
+
+document.title = `${__APP_NAME__} [${__APP_VERSION__}]`
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </BrowserRouter>
+    <App />
   </StrictMode>
 )
