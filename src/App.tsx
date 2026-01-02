@@ -1,6 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { Toaster } from '@/components/ui/sonner';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { ThemeProvider } from '@/components/theme-provider';
+import { ModeToggle } from '@/components/mode-toggle';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -38,11 +40,18 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <AppRoutes />
-        <Toaster />
-      </BrowserRouter>
-    </AuthProvider>
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme" attribute="class" enableSystem={true}>
+      <AuthProvider>
+        <BrowserRouter>
+          <div className="relative min-h-screen">
+            <div className="fixed top-4 right-4 z-50">
+              <ModeToggle />
+            </div>
+            <AppRoutes />
+            <Toaster />
+          </div>
+        </BrowserRouter>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
