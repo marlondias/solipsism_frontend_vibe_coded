@@ -102,6 +102,12 @@ export default function Login() {
                             {isLoading ? 'Signing in...' : 'Sign in'}
                         </Button>
                     </CardFooter>
+                    <div className="px-6 pb-6 text-center text-sm">
+                        Don't have an account?{' '}
+                        <a href="/signup" className="font-medium text-primary hover:underline">
+                            Sign up
+                        </a>
+                    </div>
                 </form>
             </Card>
         </div>
