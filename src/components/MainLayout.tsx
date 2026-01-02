@@ -1,14 +1,27 @@
-import React from 'react';
 import { User, Settings, LogOut } from 'lucide-react';
 import logo from '../assets/images/solipsism_logo.png';
-
 import { Link } from 'react-router';
+import { useAuth } from '@/contexts/AuthContext';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 
 interface MainLayoutProps {
     children?: React.ReactNode;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+    const { logout } = useAuth();
+
     return (
         <div className="flex flex-col min-h-screen w-full bg-background text-foreground">
             {/* Top Header */}
@@ -25,9 +38,28 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                     <button className="p-2 hover:bg-accent hover:text-accent-foreground rounded-full transition-colors cursor-pointer" title="Settings">
                         <Settings size={20} />
                     </button>
-                    <button className="p-2 hover:bg-destructive/10 hover:text-destructive rounded-full transition-colors cursor-pointer" title="Log Out">
-                        <LogOut size={20} />
-                    </button>
+
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <button className="p-2 hover:bg-destructive/10 hover:text-destructive rounded-full transition-colors cursor-pointer" title="Log Out">
+                                <LogOut size={20} />
+                            </button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Are you sure you want to log out?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    This will end your current session and you will need to log in again to access your account.
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction onClick={() => logout()} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+                                    Yes, log out!
+                                </AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
                 </div>
             </header>
 
