@@ -3,12 +3,16 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import logo from '@/assets/images/solipsism_logo.png';
 
 export default function Login() {
     return (
         <div className="flex h-screen w-full items-center justify-center bg-gray-50 px-4 dark:bg-gray-900">
             <Card className="w-full max-w-sm">
-                <CardHeader>
+                <CardHeader className="text-center">
+                    <div className="flex justify-center mb-4">
+                        <img src={logo} alt="Solipsism Logo" className="h-20 w-auto" />
+                    </div>
                     <CardTitle className="text-2xl">Login</CardTitle>
                     <CardDescription>
                         Enter your email below to login to your account
