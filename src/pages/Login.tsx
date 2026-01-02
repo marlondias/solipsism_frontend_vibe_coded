@@ -46,7 +46,15 @@ export default function Login() {
                 // Fallback to default message is already set
             }
 
-            toast.error(errorMessage);
+
+            toast.error(errorMessage, {
+                duration: 5000,
+                style: {
+                    background: '#ef4444',
+                    color: '#fff',
+                    border: '1px solid #dc2626',
+                },
+            });
         }
     };
 
