@@ -277,9 +277,9 @@ export default function Signup() {
                                 <Input
                                     id="code"
                                     type="text"
-                                    placeholder="Enter 8-character code"
+                                    placeholder="Enter 10-character code"
                                     required
-                                    maxLength={8}
+                                    maxLength={10}
                                     value={confirmationCode}
                                     onChange={(e) => setConfirmationCode(e.target.value)}
                                 />
