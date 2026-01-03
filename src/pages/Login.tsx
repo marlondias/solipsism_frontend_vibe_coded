@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import logo from '@/assets/images/solipsism_logo.png';
 import { useAuth } from '@/contexts/AuthContext';
 import { ResponseError } from '@/services/APIs/Solipsism/client/src';
+import PublicLayout from '@/components/PublicLayout';
 
 export default function Login() {
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
@@ -59,7 +60,7 @@ export default function Login() {
     };
 
     return (
-        <div className="flex h-screen w-full items-center justify-center bg-gray-50 px-4 dark:bg-gray-900">
+        <PublicLayout>
             <Card className="w-full max-w-sm">
                 <CardHeader className="text-center">
                     <div className="flex justify-center mb-4">
@@ -118,6 +119,7 @@ export default function Login() {
                     </div>
                 </form>
             </Card>
-        </div>
+        </PublicLayout>
     );
 }
+

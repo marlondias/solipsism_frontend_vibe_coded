@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import logo from '@/assets/images/solipsism_logo.png';
 import { SolipsismAPI } from '@/services/APIs/Solipsism/SolipsismAPI';
+import PublicLayout from '@/components/PublicLayout';
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -190,7 +191,7 @@ export default function Signup() {
     };
 
     return (
-        <div className="flex h-screen w-full items-center justify-center bg-gray-50 px-4 dark:bg-gray-900">
+        <PublicLayout>
             <Card className="w-full max-w-sm">
                 <CardHeader className="text-center">
                     <div className="flex justify-center mb-4">
@@ -304,6 +305,7 @@ export default function Signup() {
                     </form>
                 )}
             </Card>
-        </div>
+        </PublicLayout>
     );
 }
+
