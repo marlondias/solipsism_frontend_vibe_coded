@@ -1,7 +1,8 @@
-import { User, Settings, LogOut } from 'lucide-react';
+import { User, LogOut } from 'lucide-react';
 import logo from '../assets/images/solipsism_logo.png';
 import { Link } from 'react-router';
 import { useAuth } from '@/contexts/AuthContext';
+import { ModeToggle } from '@/components/mode-toggle';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -35,9 +36,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                     <button className="p-2 hover:bg-accent hover:text-accent-foreground rounded-full transition-colors cursor-pointer" title="User Profile">
                         <User size={20} />
                     </button>
-                    <button className="p-2 hover:bg-accent hover:text-accent-foreground rounded-full transition-colors cursor-pointer" title="Settings">
-                        <Settings size={20} />
-                    </button>
+                    <ModeToggle minimal={true} />
 
                     <AlertDialog>
                         <AlertDialogTrigger asChild>
@@ -65,7 +64,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
             <div className="flex flex-1">
                 {/* Left Sidebar */}
-                <aside className="w-[30%] border-r border-border p-6 flex items-center justify-center bg-muted/30">
+                <aside className="w-[20%] border-r border-border p-6 flex items-center justify-center bg-muted/30">
                     <div className="text-center">
                         <p className="text-sm font-semibold tracking-wider uppercase text-muted-foreground">
                             THIS IS THE LEFT SECTION

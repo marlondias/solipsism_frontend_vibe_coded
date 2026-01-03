@@ -44,9 +44,6 @@ export default function App() {
       <AuthProvider>
         <BrowserRouter>
           <div className="relative min-h-screen">
-            <div className="fixed top-4 right-4 z-50">
-              <ModeToggle />
-            </div>
             <AppRoutes />
             <Toaster />
           </div>
