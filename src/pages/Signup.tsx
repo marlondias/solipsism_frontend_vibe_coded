@@ -85,9 +85,9 @@ export default function Signup() {
             toast.error(errorMessage, {
                 duration: 5000,
                 style: {
-                    background: '#ef4444',
-                    color: '#fff',
-                    border: '1px solid #dc2626',
+                    background: 'var(--destructive)',
+                    color: 'var(--primary-foreground)',
+                    border: '1px solid var(--destructive)',
                 },
             });
         } finally {
@@ -133,9 +133,9 @@ export default function Signup() {
             toast.error(errorMessage, {
                 duration: 5000,
                 style: {
-                    background: '#ef4444',
-                    color: '#fff',
-                    border: '1px solid #dc2626',
+                    background: 'var(--destructive)',
+                    color: 'var(--primary-foreground)',
+                    border: '1px solid var(--destructive)',
                 },
             });
         } finally {
@@ -180,9 +180,9 @@ export default function Signup() {
             toast.error(errorMessage, {
                 duration: 5000,
                 style: {
-                    background: '#ef4444',
-                    color: '#fff',
-                    border: '1px solid #dc2626',
+                    background: 'var(--destructive)',
+                    color: 'var(--primary-foreground)',
+                    border: '1px solid var(--destructive)',
                 },
             });
         } finally {

@@ -7,7 +7,7 @@ interface PublicLayoutProps {
 
 const PublicLayout: React.FC<PublicLayoutProps> = ({ children }) => {
     return (
-        <div className="relative min-h-screen w-full flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+        <div className="relative min-h-screen w-full flex items-center justify-center bg-background px-4">
             {/* Top Left Theme Toggle */}
             <div className="absolute top-4 left-4 z-50">
                 <ModeToggle />
