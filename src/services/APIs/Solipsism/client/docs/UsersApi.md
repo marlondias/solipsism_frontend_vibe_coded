@@ -14,7 +14,7 @@ All URIs are relative to *http://localhost:5001*
 | [**usersAddCredential**](UsersApi.md#usersaddcredential) | **PUT** /users/{userId}/credential |  |
 | [**usersCreate**](UsersApi.md#userscreate) | **POST** /users |  |
 | [**usersDelete**](UsersApi.md#usersdelete) | **DELETE** /users/{userId} |  |
-| [**usersFindById**](UsersApi.md#usersfindbyid) | **GET** /users/{userId} |  |
+| [**usersFindByIdOrUsername**](UsersApi.md#usersfindbyidorusername) | **GET** /users/{userId} |  |
 | [**usersFindMany**](UsersApi.md#usersfindmany) | **GET** /users |  |
 | [**usersGetPostsMetadata**](UsersApi.md#usersgetpostsmetadata) | **GET** /users/{userId}/posts-metadata |  |
 | [**usersUpdate**](UsersApi.md#usersupdate) | **PATCH** /users/{userId} |  |
@@ -737,9 +737,9 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
-## usersFindById
+## usersFindByIdOrUsername
 
-> UserDTO usersFindById(userId)
+> UserDTO usersFindByIdOrUsername(userId)
 
 
 
@@ -750,19 +750,19 @@ import {
   Configuration,
   UsersApi,
 } from 'solipsism-api-client';
-import type { UsersFindByIdRequest } from 'solipsism-api-client';
+import type { UsersFindByIdOrUsernameRequest } from 'solipsism-api-client';
 
 async function example() {
   console.log("🚀 Testing solipsism-api-client SDK...");
   const api = new UsersApi();
 
   const body = {
-    // HashtagsFindTrendingWindowInHoursParameter
-    userId: 56,
-  } satisfies UsersFindByIdRequest;
+    // string
+    userId: userId_example,
+  } satisfies UsersFindByIdOrUsernameRequest;
 
   try {
-    const data = await api.usersFindById(body);
+    const data = await api.usersFindByIdOrUsername(body);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -778,7 +778,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userId** | [](.md) |  | [Defaults to `undefined`] |
+| **userId** | `string` |  | [Defaults to `undefined`] |
 
 ### Return type
 
@@ -798,11 +798,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **404** | Not Found |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
-| **0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

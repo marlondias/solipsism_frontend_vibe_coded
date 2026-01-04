@@ -97,8 +97,8 @@ export interface UsersDeleteRequest {
     userId: HashtagsFindTrendingWindowInHoursParameter;
 }
 
-export interface UsersFindByIdRequest {
-    userId: HashtagsFindTrendingWindowInHoursParameter;
+export interface UsersFindByIdOrUsernameRequest {
+    userId: string;
 }
 
 export interface UsersFindManyRequest {
@@ -543,11 +543,11 @@ export class UsersApi extends runtime.BaseAPI {
 
     /**
      */
-    async usersFindByIdRaw(requestParameters: UsersFindByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserDTO>> {
+    async usersFindByIdOrUsernameRaw(requestParameters: UsersFindByIdOrUsernameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserDTO>> {
         if (requestParameters['userId'] == null) {
             throw new runtime.RequiredError(
                 'userId',
-                'Required parameter "userId" was null or undefined when calling usersFindById().'
+                'Required parameter "userId" was null or undefined when calling usersFindByIdOrUsername().'
             );
         }
 
@@ -571,8 +571,8 @@ export class UsersApi extends runtime.BaseAPI {
 
     /**
      */
-    async usersFindById(requestParameters: UsersFindByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserDTO> {
-        const response = await this.usersFindByIdRaw(requestParameters, initOverrides);
+    async usersFindByIdOrUsername(requestParameters: UsersFindByIdOrUsernameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserDTO> {
+        const response = await this.usersFindByIdOrUsernameRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -53,8 +53,7 @@ All URIs are relative to *http://localhost:5001*
 *AuthApi* | [**authLogin**](docs/AuthApi.md#authlogin) | **POST** /auth/login | 
 *AuthApi* | [**authValidateToken**](docs/AuthApi.md#authvalidatetoken) | **GET** /auth/validate-token | 
 *HashtagsApi* | [**hashtagsCreate**](docs/HashtagsApi.md#hashtagscreate) | **POST** /hashtags | 
-*HashtagsApi* | [**hashtagsFindById**](docs/HashtagsApi.md#hashtagsfindbyid) | **GET** /hashtags/{id} | 
-*HashtagsApi* | [**hashtagsFindByTag**](docs/HashtagsApi.md#hashtagsfindbytag) | **GET** /hashtags/{tag} | 
+*HashtagsApi* | [**hashtagsFindByIdOrTag**](docs/HashtagsApi.md#hashtagsfindbyidortag) | **GET** /hashtags/{id} | 
 *HashtagsApi* | [**hashtagsFindTrending**](docs/HashtagsApi.md#hashtagsfindtrending) | **GET** /hashtags/trending | 
 *PostsApi* | [**postsCreate**](docs/PostsApi.md#postscreate) | **POST** /posts | 
 *PostsApi* | [**postsDelete**](docs/PostsApi.md#postsdelete) | **DELETE** /posts/{postId} | 
@@ -73,7 +72,7 @@ All URIs are relative to *http://localhost:5001*
 *UsersApi* | [**usersAddCredential**](docs/UsersApi.md#usersaddcredential) | **PUT** /users/{userId}/credential | 
 *UsersApi* | [**usersCreate**](docs/UsersApi.md#userscreate) | **POST** /users | 
 *UsersApi* | [**usersDelete**](docs/UsersApi.md#usersdelete) | **DELETE** /users/{userId} | 
-*UsersApi* | [**usersFindById**](docs/UsersApi.md#usersfindbyid) | **GET** /users/{userId} | 
+*UsersApi* | [**usersFindByIdOrUsername**](docs/UsersApi.md#usersfindbyidorusername) | **GET** /users/{userId} | 
 *UsersApi* | [**usersFindMany**](docs/UsersApi.md#usersfindmany) | **GET** /users | 
 *UsersApi* | [**usersGetPostsMetadata**](docs/UsersApi.md#usersgetpostsmetadata) | **GET** /users/{userId}/posts-metadata | 
 *UsersApi* | [**usersUpdate**](docs/UsersApi.md#usersupdate) | **PATCH** /users/{userId} | 

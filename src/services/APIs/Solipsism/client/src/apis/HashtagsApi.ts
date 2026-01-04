@@ -41,12 +41,8 @@ export interface HashtagsCreateRequest {
     createHashtagInput: CreateHashtagInput;
 }
 
-export interface HashtagsFindByIdRequest {
-    id: number;
-}
-
-export interface HashtagsFindByTagRequest {
-    tag: string;
+export interface HashtagsFindByIdOrTagRequest {
+    id: string;
 }
 
 export interface HashtagsFindTrendingRequest {
@@ -97,11 +93,11 @@ export class HashtagsApi extends runtime.BaseAPI {
 
     /**
      */
-    async hashtagsFindByIdRaw(requestParameters: HashtagsFindByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Hashtag>> {
+    async hashtagsFindByIdOrTagRaw(requestParameters: HashtagsFindByIdOrTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Hashtag>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling hashtagsFindById().'
+                'Required parameter "id" was null or undefined when calling hashtagsFindByIdOrTag().'
             );
         }
 
@@ -125,43 +121,8 @@ export class HashtagsApi extends runtime.BaseAPI {
 
     /**
      */
-    async hashtagsFindById(requestParameters: HashtagsFindByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Hashtag> {
-        const response = await this.hashtagsFindByIdRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async hashtagsFindByTagRaw(requestParameters: HashtagsFindByTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Hashtag>> {
-        if (requestParameters['tag'] == null) {
-            throw new runtime.RequiredError(
-                'tag',
-                'Required parameter "tag" was null or undefined when calling hashtagsFindByTag().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-
-        let urlPath = `/hashtags/{tag}`;
-        urlPath = urlPath.replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters['tag'])));
-
-        const response = await this.request({
-            path: urlPath,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => HashtagFromJSON(jsonValue));
-    }
-
-    /**
-     */
-    async hashtagsFindByTag(requestParameters: HashtagsFindByTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Hashtag> {
-        const response = await this.hashtagsFindByTagRaw(requestParameters, initOverrides);
+    async hashtagsFindByIdOrTag(requestParameters: HashtagsFindByIdOrTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Hashtag> {
+        const response = await this.hashtagsFindByIdOrTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
