@@ -14,18 +14,13 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+    const [token, setToken] = useState<string | null>(getAuthToken());
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!getAuthToken());
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [token, setToken] = useState<string | null>(null);
 
-    // Initialize auth state from local storage
+    // No longer need to initialize in useEffect since we do it synchronously above
     useEffect(() => {
-        const storedToken = getAuthToken();
-        if (storedToken) {
-            setToken(storedToken);
-            setIsAuthenticated(true);
-        }
-        setIsLoading(false);
+        // isLoading is already false, but we keep the effect if we need to verify token in the future
     }, []);
 
     const login = async (credentials: GenerateTokenInput) => {

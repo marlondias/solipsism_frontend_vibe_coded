@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes, Outlet } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -10,30 +10,46 @@ import Trending from './pages/Trending';
 import UserProfile from './pages/UserProfile';
 import HashtagDetails from './pages/HashtagDetails';
 
-function AppRoutes() {
+function ProtectedRoute() {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
     return <div className="flex h-screen w-full items-center justify-center">Loading...</div>;
   }
 
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+}
+
+function PublicRoute() {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <div className="flex h-screen w-full items-center justify-center">Loading...</div>;
+  }
+
+  return !isAuthenticated ? <Outlet /> : <Navigate to="/home" replace />;
+}
+
+function AppRoutes() {
   return (
     <Routes>
-      {isAuthenticated ? (
-        <>
-          <Route path="/home" element={<Home />} />
-          <Route path="/trending" element={<Trending />} />
-          <Route path="/u/:username" element={<UserProfile />} />
-          <Route path="/h/:hashtag" element={<HashtagDetails />} />
-          <Route path="*" element={<Navigate to="/home" replace />} />
-        </>
-      ) : (
-        <>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </>
-      )}
+      {/* Protected Routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/trending" element={<Trending />} />
+        <Route path="/u/:username" element={<UserProfile />} />
+        <Route path="/h/:hashtag" element={<HashtagDetails />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
+      </Route>
+
+      {/* Public Routes */}
+      <Route element={<PublicRoute />}>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Route>
+
+      {/* Catch-all */}
+      <Route path="*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
 }
