@@ -1,3 +1,11 @@
+import MainLayout from '../components/MainLayout';
+import { useParams } from 'react-router-dom';
+
 export default function UserProfile() {
-    return <div>UserProfile</div>
+    const { username } = useParams();
+    return (
+        <MainLayout>
+            <div>UserProfile: {username}</div>
+        </MainLayout>
+    );
 }
