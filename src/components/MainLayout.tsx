@@ -1,6 +1,6 @@
 import { User, LogOut } from 'lucide-react';
 import logo from '../assets/images/solipsism_logo.png';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { ModeToggle } from '@/components/mode-toggle';
 import {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -113,9 +113,9 @@ export default function Login() {
                     </CardFooter>
                     <div className="px-6 pb-6 text-center text-sm">
                         Don't have an account?{' '}
-                        <a href="/signup" className="font-medium text-primary hover:underline">
+                        <Link to="/signup" className="font-medium text-primary hover:underline">
                             Sign up
-                        </a>
+                        </Link>
                     </div>
                 </form>
             </Card>
